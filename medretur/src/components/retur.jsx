@@ -8,16 +8,38 @@ export default function Retur(){
     const [ran, setran]= useState(true)
     console.log(ran);
     // function Returchoices() {
-        
+    const [form, setform] = useState({
+        type: "",
+        alternativ: "",
+        igjen: 0
+    })   
 
     // }
     if (ran){
             setran(false)
             choices.forEach(element => {
+                const radio =  <input className="radio" id={element} type="radio" value={element} name="choice"/> 
+                const button = <label className="retur--choice" htmlFor={element}>{element}</label>
+                
+                // <p >{element}</p>
+
             setRchoices(prev => (
-                [...prev, <p className="retur--choice">{element}</p>]))
+                [...prev, radio, button ]))
  
     })}
+
+    function boxchoice(e){
+        const value = e
+        console.log(value);
+    }
+    function radiobox(e){
+        const value = e.target.value
+        console.log(value);
+    }
+
+    function igjen(e) {
+        console.log(e.target.value)
+    }
 
 
     return(
@@ -26,14 +48,30 @@ export default function Retur(){
             <div className="retur--form">
                 <h3>{titles[0]}</h3>
                 <div className="retur-type">
-                <div className="box"><p>pillebox</p> </div>
-                <div className="box"><p>flasker</p></div>
-                <div className="box"><p>pillebrett</p></div>
+                <div 
+                id= "pillebox" 
+                className="box" 
+                onClick={()=> boxchoice("pillebox")}>
+                    <p>pillebox</p> 
                 </div>
-                <div className="retur--choices" >{rchoices}</div>
+                <div 
+                id= "flasker" 
+                className="box" 
+                onClick={()=> boxchoice("flasker")}>
+                    <p>flasker</p> 
+                    </div>
+                <div 
+                id="pillebrett" 
+                className="box" 
+                onClick={()=> boxchoice("pillebrett")}>
+                <p>pillebrett</p>
+                </div>
+                </div>
+                <div className="retur--choices" onChange={(e)=> {radiobox(e)}} >{rchoices}</div>
                 <h3>{titles[1]}</h3>
-                <input type="range" max={100} min={0} onChange={(event) =>{console.log(event.target.value)}} ></input>
-
+                <input type="range" max={100} min={0} onChange={(e) =>{igjen(e)}} ></input>
+            
+            <p className="btn">send</p>
             </div>
             
         </div>
