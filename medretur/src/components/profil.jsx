@@ -4,6 +4,7 @@ export default function Profil() {
         <div className="profl main">
 
             <h2>Profil</h2>
+            
         </div>
     )
 }
