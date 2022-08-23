@@ -1,6 +1,7 @@
+import React from 'react';
 import { useState } from "react"
 import Profil from "./profil"
-import About from "./about"
+import OmOss from "./omoss"
 import Retur from "./retur"
 
 export default function Menu(){
@@ -10,10 +11,12 @@ const [currentcontent, setcurrentcontent] = useState("profil")
         switch (currentcontent){
             case "profil":
                return <Profil/>
-            case "about":
-                return <About/>
+            case "omOss":
+                return <OmOss/>
             case "retur":
                 return<Retur/>
+            default:
+                return <Profil/>
 
         }
 
@@ -22,15 +25,15 @@ const [currentcontent, setcurrentcontent] = useState("profil")
 
 
     return(
-        <div className="main">
+        <div className="container">
             {content()}
             <div className="menu" onClick={(e)=>{
-                console.log(e.target.id)
+                // console.log(e.target.id)
                 setcurrentcontent(e.target.id)
             }} >
-                <p className="btn" id="profil">profil</p>
-                <p className="btn" id="retur">retur</p>
-                <p className="btn" id="about">om oss</p>
+                <p className="btn" id="profil">Profil</p>
+                <p className="btn" id="retur">Retur</p>
+                <p className="btn" id="omOss">Om oss</p>
             </div>
         </div>
         )
